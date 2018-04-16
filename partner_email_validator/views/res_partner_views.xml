@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="email" position="replace"/>
+            <field name="fax" position="after">
+                <label for="email"/>
+                <div>
+                    <div>
+                        <field name="email" widget="email" attrs="{'required': [('user_ids','!=', [])]}"/>
+                    </div>
+                    <div>
+                        <button name="mail_validator" string="Check" type="object" class="oe_inline fa fa-arrow-right oe_link"/>
+                    </div>
+                </div>
+            </field>
+        </field>
+     </record>
+</odoo>

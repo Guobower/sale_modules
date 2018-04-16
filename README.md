@@ -6,4 +6,5 @@ This project aim to deal with modules related to manage sale and their related w
  - Block sale order confirmation for specific reasons
  - Send daily sales report
  - Send weekly sales report
+ - Partner email validator
  - ...
