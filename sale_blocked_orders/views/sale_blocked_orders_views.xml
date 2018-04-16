@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_blocked_orders_view_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_order_blockages.view_order_form"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <field name="highrisk_country" position="replace"/>
+        </field>
+    </record>
+
+    <record id="sale_blocked_orders_view_tree" model="ir.ui.view">
+        <field name="name">Blocked orders</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="blacklist_status"/>
+                <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="sale_blocked_orders_action" model="ir.actions.act_window">
+        <field name="name">Blocked Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('blacklist_status', 'in', ('pending', 'bank_statement_requested',
+            'credit_card_image_requested'))]
+        </field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a new sale to block.
+            </p>
+        </field>
+    </record>
+
+    <record id="sale_blocked_orders_tree" model="ir.actions.act_window.view">
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="sale_blocked_orders_view_tree"/>
+        <field name="act_window_id" ref="sale_blocked_orders_action"/>
+    </record>
+
+    <record id="sale_blocked_orders_form" model="ir.actions.act_window.view">
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="sale_blocked_orders_view_form"/>
+        <field name="act_window_id" ref="sale_blocked_orders_action"/>
+    </record>
+
+    <menuitem id="sale_blocked_orders" name="Blocked Orders" action="sale_blocked_orders_action"
+        parent="sales_team.menu_sales" sequence="12"/>
+
+</odoo>
