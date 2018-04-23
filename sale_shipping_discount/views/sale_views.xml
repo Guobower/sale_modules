@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='delivery_set']" position="after">
+                <button name="discount_shipping_lines" string="Shipping discount" type="object"
+                        class="oe_inline fa fa-arrow-right oe_link" attrs="{'invisible':['|',('carrier_id','=',False),('state','not in',('draft','sent'))]}"/>
+            </xpath>
+        </field>
+     </record>
+</odoo>

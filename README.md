@@ -8,4 +8,5 @@ This project aim to deal with modules related to manage sale and their related w
  - Send weekly sales report
  - Partner email validator
  - Menu for blocked orders
+ - Option to give shipping discount on sales order
  - ...
