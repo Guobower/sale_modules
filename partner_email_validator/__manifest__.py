@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "Partner email validator",
-    'summary': "",
+    'summary': "Partner email validator",
     'author': "Karthi D<karthidev1606@gmail.com>",
     'license': "AGPL-3",
     'category': 'Sales',
